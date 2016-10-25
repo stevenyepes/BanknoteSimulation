@@ -9,7 +9,7 @@ clf = tree.DecisionTreeClassifier()
 # Obtener datos desde el archivo
 BD = np.genfromtxt('data_banknote_authentication.txt', dtype='float', delimiter=',')
 
-
+## guardar datos en archivo
 ## Desordenar los datos para luego dividirlos
 N = 1372
 np.random.shuffle(BD)
