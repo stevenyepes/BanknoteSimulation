@@ -26,12 +26,10 @@ y_validation = np.array(b[:,4], dtype='int')
 
 
 model = svm.suportVectorMachine(1)
-svm.prueba(model,X,y)
-svm.generarEstadisticos(model, X, y, X_validation, y_validation)
+svm.generarEstadisticos(model,X,y)
 
-model = kv.kVecinos(15)
-kv.generarEstadisticos(model, X, y, X_validation, y_validation)
-kv.prueba(model,X,y)
+model = kv.kVecinos(1)
+kv.generarEstadisticos(model,X,y)
 
 model = rf.randomForest(25)
-rf.generarEstadisticos(model, X, y, X_validation, y_validation)
+rf.generarEstadisticos(model,X,y)

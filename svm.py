@@ -13,12 +13,7 @@ def suportVectorMachine(C):
     clf = svm.SVC(C=C)
     return clf
 
-
-def generarEstadisticos(model, XTest, yTest,X_validation, y_validation):
-    print('SVC')
-    crossValidation(model,XTest,yTest)
-
-def prueba(model,X,y):
+def generarEstadisticos(model,X,y):
     # Split the dataset in two equal parts
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.5, random_state=0)
@@ -26,7 +21,10 @@ def prueba(model,X,y):
     # Set the parameters by cross-validation
     tuned_parameters = [{'kernel': ['rbf'], 'gamma': [1e-3, 1e-4],
                          'C': [1, 10, 100, 1000]},
-                        {'kernel': ['linear'], 'C': [1, 10, 100, 1000]}]
+                        {'kernel': ['linear'], 'C': [1, 10, 100, 1000]},
+                        {'kernel': ['poly'], 'degree': [2, 3,4,5,6],
+                                             'C': [1, 10, 100, 1000]}
+                        ]
 
     scores = ['precision', 'recall']
 

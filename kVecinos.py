@@ -12,11 +12,7 @@ def kVecinos(n_neighbors):
     return clf
 
 
-def generarEstadisticos(model, XTest, yTest, X_validation, y_validation):
-    print('k-vecinos')
-    crossValidation(model,XTest,yTest)
-
-def prueba(model,X,y):
+def generarEstadisticos(model,X,y):
     # Split the dataset in two equal parts
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.5, random_state=0)
@@ -31,7 +27,7 @@ def prueba(model,X,y):
         print("# Tuning hyper-parameters for %s" % score)
         print()
 
-        clf = GridSearchCV(model, tuned_parameters, cv=5,
+        clf = GridSearchCV(model, tuned_parameters, cv=10,
                            scoring='%s_macro' % score)
         clf.fit(X_train, y_train)
 
