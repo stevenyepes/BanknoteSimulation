@@ -1,4 +1,5 @@
 import numpy as np
+from sklearn.model_selection import train_test_split
 import svm as svm
 import randomForest as rf
 import kVecinos as kv
@@ -6,23 +7,16 @@ import redNeuronal as rn
 import utils
 
 # Obtener datos desde el archivo
-
 BD = np.load('data.npy')
-N = 1372
-
+# Separar los datos en variables y salida
+X = BD[:,0:4]
+y = np.array(BD[:,4], dtype='int')
 # Particiones
+# Training 80% Validation 20%
+X, X_validation, y, y_validation = train_test_split(
+    X, y, test_size=0.2, random_state=0)
 
-# Training 80%
-a = BD[:int(N*0.8)]
-# Validation 20%
-b = BD[int(N*0.8):]
-
-X = a[:,0:4]
-y = np.array(a[:,4], dtype='int')
-
-X_validation = b[:,0:4]
-y_validation = np.array(b[:,4], dtype='int')
-
+## Menú
 option = input("Ingrese por favor el modelo a entrenar, el sistema retornará\n" +
                 "un análisis completo del resultado:\n" +
                 "1: k-vecinos\n" +
@@ -41,4 +35,8 @@ elif(option == "4"):
 else:
     print("ingrese una opción válida")
 
-utils.reporte(model, X_validation, y_validation)
+## Reporte final 
+try:
+    utils.reporte(model, X_validation, y_validation)
+except NameError as e:
+    pass
