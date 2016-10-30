@@ -34,7 +34,6 @@ def generarEstadisticos(model, X, y, tuned_parameters):
             print("%0.3f (+/-%0.03f) for %r"
                   % (mean, std * 2, params))
         print()
-
         print("Detailed classification report:")
         print()
         print("The model is trained on the full development set.")

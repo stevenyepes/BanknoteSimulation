@@ -17,12 +17,13 @@ X, X_validation, y, y_validation = train_test_split(
     X, y, test_size=0.2, random_state=0)
 
 ## Menú
-option = input("Ingrese por favor el modelo a entrenar, el sistema retornará\n" +
-                "un análisis completo del resultado:\n" +
-                "1: k-vecinos\n" +
-                "2: Random Forest\n" +
-                "3: Suport Vector Machines\n"+
-                "4: Red Neuronal\n-> ")
+option = input("###      Banknote Authentication     ###\n" +
+                " Ingrese por favor el modelo a entrenar, el sistema retornará\n" +
+                " un análisis completo del resultado: \n" +
+                " 1: k-vecinos\n" +
+                " 2: Random Forest\n" +
+                " 3: Suport Vector Machines\n"+
+                " 4: Red Neuronal\n-> ")
 
 if(option == "1"):
     model = kv.kVecinos(X,y)
@@ -35,7 +36,7 @@ elif(option == "4"):
 else:
     print("ingrese una opción válida")
 
-## Reporte final 
+## Reporte final
 try:
     utils.reporte(model, X_validation, y_validation)
 except NameError as e:
