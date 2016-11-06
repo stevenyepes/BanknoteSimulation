@@ -5,6 +5,7 @@ import randomForest as rf
 import kVecinos as kv
 import redNeuronal as rn
 import utils
+from seleccion import seleccionSecuencial
 
 # Obtener datos desde el archivo
 BD = np.load('data.npy')
@@ -33,6 +34,8 @@ elif(option == "3"):
     model = svm.suportVectorMachine(X,y)
 elif(option == "4"):
     model = rn.neuralNetwork(X,y)
+elif(option == "6"):
+    seleccionSecuencial(X,y)
 else:
     print("ingrese una opción válida")
 

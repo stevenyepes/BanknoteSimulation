@@ -19,7 +19,7 @@ def generarEstadisticos(model, X, y, tuned_parameters):
         print()
 
         clf = GridSearchCV(model, tuned_parameters, cv=10,
-                           scoring='%s_macro' % score)
+                           scoring='%s_macro' % score, n_jobs=-1)
         clf.fit(X_train, y_train)
 
         print("Best parameters set found on development set:")
