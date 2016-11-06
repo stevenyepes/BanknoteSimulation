@@ -4,6 +4,7 @@ import svm as svm
 import randomForest as rf
 import kVecinos as kv
 import redNeuronal as rn
+import discrimantesGaussianas as dg
 import utils
 from seleccion import seleccionSecuencial
 
@@ -24,7 +25,8 @@ option = input("###      Banknote Authentication     ###\n" +
                 " 1: k-vecinos\n" +
                 " 2: Random Forest\n" +
                 " 3: Suport Vector Machines\n"+
-                " 4: Red Neuronal\n-> ")
+                " 4: Red Neuronal\n"+
+                " 5: Funciones discriminantes gaussianas\n->")
 
 if(option == "1"):
     model = kv.kVecinos(X,y)
@@ -34,6 +36,8 @@ elif(option == "3"):
     model = svm.suportVectorMachine(X,y)
 elif(option == "4"):
     model = rn.neuralNetwork(X,y)
+elif(option == "5"):
+    model = dg.fdg(X,y)
 elif(option == "6"):
     seleccionSecuencial(X,y)
 else:
