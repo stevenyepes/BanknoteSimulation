@@ -7,6 +7,8 @@ import redNeuronal as rn
 import discrimantesGaussianas as dg
 import utils
 from seleccion import seleccionSecuencial
+from seleccion import fisher
+from seleccion import pearson
 
 # Obtener datos desde el archivo
 BD = np.load('data.npy')
@@ -26,7 +28,10 @@ option = input("###      Banknote Authentication     ###\n" +
                 " 2: Random Forest\n" +
                 " 3: Suport Vector Machines\n"+
                 " 4: Red Neuronal\n"+
-                " 5: Funciones discriminantes gaussianas\n->")
+                " 5: Funciones discriminantes gaussianas\n"+
+                " 6: Seleccion Secuencial\n"+
+                " 7: Indice de Fisher\n"+
+                " 8: Coeficiente de Correlación Pearson\n->")
 
 if(option == "1"):
     model = kv.kVecinos(X,y)
@@ -40,6 +45,10 @@ elif(option == "5"):
     model = dg.fdg(X,y)
 elif(option == "6"):
     seleccionSecuencial(X,y)
+elif(option == "7"):
+    fisher(X,y)
+elif(option == "8"):
+    pearson(X,y)
 else:
     print("ingrese una opción válida")
 
