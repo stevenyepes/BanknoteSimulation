@@ -17,7 +17,7 @@ def seleccionSecuencial(X,y):
               n_jobs=-1)
     sfs = sfs.fit(X, y)
 
-    print('\nSequential Forward Selection (k=3):')
+    print('\nSequential Forward Selection (k=4):')
     print(sfs.k_feature_idx_)
     print('CV Score:')
     print(sfs.k_score_)

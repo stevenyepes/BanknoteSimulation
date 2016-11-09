@@ -7,6 +7,7 @@ import redNeuronal as rn
 import discrimantesGaussianas as dg
 import utils
 from seleccion import seleccionSecuencial
+from pca import pca
 
 # Obtener datos desde el archivo
 BD = np.load('data.npy')
@@ -26,7 +27,8 @@ option = input("###      Banknote Authentication     ###\n" +
                 " 2: Random Forest\n" +
                 " 3: Suport Vector Machines\n"+
                 " 4: Red Neuronal\n"+
-                " 5: Funciones discriminantes gaussianas\n->")
+                " 5: Funciones discriminantes gaussianas\n"+
+                " 6: Selección secuencial\n-> ")
 
 if(option == "1"):
     model = kv.kVecinos(X,y)
@@ -40,6 +42,8 @@ elif(option == "5"):
     model = dg.fdg(X,y)
 elif(option == "6"):
     seleccionSecuencial(X,y)
+elif(option == "7"):
+    pca(X)    
 else:
     print("ingrese una opción válida")
 
