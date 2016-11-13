@@ -8,6 +8,8 @@ import discrimantesGaussianas as dg
 import utils
 from seleccion import seleccionSecuencial
 from pca import pca
+from seleccion import fisher
+from seleccion import pearson
 
 # Obtener datos desde el archivo
 BD = np.load('data.npy')
@@ -28,7 +30,9 @@ option = input("###      Banknote Authentication     ###\n" +
                 " 3: Suport Vector Machines\n"+
                 " 4: Red Neuronal\n"+
                 " 5: Funciones discriminantes gaussianas\n"+
-                " 6: Selección secuencial\n-> ")
+                " 6: Selección Secuencial\n"+
+                " 7: Indice de Fisher\n"+
+                " 8: Coeficiente de Correlación Pearson\n-> ")
 
 if(option == "1"):
     model = kv.kVecinos(X,y)
@@ -43,7 +47,10 @@ elif(option == "5"):
 elif(option == "6"):
     seleccionSecuencial(X,y)
 elif(option == "7"):
-    pca(X)    
+    #pca(X)
+    fisher(X,y)
+elif(option == "8"):
+    pearson(X,y)
 else:
     print("ingrese una opción válida")
 

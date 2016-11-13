@@ -1,7 +1,10 @@
 from mlxtend.feature_selection import SequentialFeatureSelector as SFS
 from sklearn.neighbors import KNeighborsClassifier
 import pandas as pd
+from sklearn.feature_selection import SelectPercentile, f_classif
+import numpy as np
 
+from scipy.stats import pearsonr
 
 def seleccionSecuencial(X,y):
 
@@ -22,3 +25,14 @@ def seleccionSecuencial(X,y):
     print('CV Score:')
     print(sfs.k_score_)
     print(pd.DataFrame.from_dict(sfs.get_metric_dict()).T)
+
+
+def fisher(X,y):
+    selector = SelectPercentile(f_classif, percentile=10)
+    selector.fit(X, y)
+    scores = -np.log10(selector.pvalues_)
+    scores /= scores.max()
+    print(scores)
+
+def pearson(X,y):
+    pass
