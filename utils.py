@@ -7,7 +7,7 @@ from sklearn.model_selection import GridSearchCV
 def generarEstadisticos(model, X, y, tuned_parameters):
 
 
-    # Split the dataset in two equal parts
+    # Split the dataset in two parts
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=0)
 
