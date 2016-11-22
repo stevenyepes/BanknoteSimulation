@@ -38,7 +38,7 @@ def fisher(X1,y):
 
     covar= clf.covariance_
     print (covar)
-    print(covar / covar.max())
+    print(covar / covar.max(axis=0))
 
 def pearson(X,y):
     pass
