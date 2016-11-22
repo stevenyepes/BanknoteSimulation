@@ -1,7 +1,8 @@
 from mlxtend.feature_selection import SequentialFeatureSelector as SFS
 from sklearn.neighbors import KNeighborsClassifier
 import pandas as pd
-from sklearn.feature_selection import SelectPercentile, f_classif
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.preprocessing import normalize
 import numpy as np
 
 from scipy.stats import pearsonr
@@ -27,12 +28,11 @@ def seleccionSecuencial(X,y):
     print(pd.DataFrame.from_dict(sfs.get_metric_dict()).T)
 
 
-def fisher(X,y):
-    selector = SelectPercentile(f_classif, percentile=10)
-    selector.fit(X, y)
-    scores = -np.log10(selector.pvalues_)
-    scores /= scores.max()
-    print(scores)
+def fisher(X1,y):
+    clf = LinearDiscriminantAnalysis(n_components=4, priors=None, shrinkage=None,solver='svd', store_covariance=True, tol=0.0001)
+    clf.fit(X1, y)
+    covar= clf.covariance_
+    print(covar / covar.max(axis=0))
 
 def pearson(X,y):
     pass
