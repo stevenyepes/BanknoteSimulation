@@ -1,14 +1,17 @@
 from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+import kVecinos as kv
 
-def pca(X):
+def pca(X, y,componentes):
     print('Datos originales')
     print(X)
-    pca = PCA(n_components=4)
+    pca = PCA(n_components=componentes)
     X_N= pca.fit_transform(X)
     print('Datos transformados')
     print(X_N)
-    X_R = pca.inverse_transform(X_N)
-    print('Datos restaurados')
-    print(X_R)
-
-    
+    print('Matriz de varianza explicada')
+    plt.plot(pca.explained_variance_ratio_)
+    title = 'Porcentaje de varianza explicada con ' + str(componentes) + ' componentes'
+    plt.title(title)
+    plt.show()
+    model = kv.kVecinos(X_N, y)

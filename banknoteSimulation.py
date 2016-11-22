@@ -32,7 +32,8 @@ option = input("###      Banknote Authentication     ###\n" +
                 " 5: Funciones discriminantes gaussianas\n"+
                 " 6: Selección Secuencial\n"+
                 " 7: Indice de Fisher\n"+
-                " 8: Coeficiente de Correlación Pearson\n-> ")
+                " 8: Coeficiente de Correlación Pearson\n" +
+                " 9: Análisis de componentes principales\n-> ")
 
 if(option == "1"):
     model = kv.kVecinos(X,y)
@@ -47,10 +48,12 @@ elif(option == "5"):
 elif(option == "6"):
     seleccionSecuencial(X,y)
 elif(option == "7"):
-    #pca(X)
     fisher(X,y)
 elif(option == "8"):
     pearson(X,y)
+elif(option == "9"):
+    pca(X,y,3)
+
 else:
     print("ingrese una opción válida")
 
