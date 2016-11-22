@@ -30,14 +30,8 @@ def seleccionSecuencial(X,y):
 
 def fisher(X1,y):
     clf = LinearDiscriminantAnalysis(n_components=4, priors=None, shrinkage=None,solver='svd', store_covariance=True, tol=0.0001)
-    X = np.array([[-1, -1], [-2, -1], [-3, -2], [1, 1], [2, 1], [3, 2]])
-    #print(X)
-    #print(X1)
-    #y = np.array([1, 1, 1, 2, 2, 2])
     clf.fit(X1, y)
-
     covar= clf.covariance_
-    print (covar)
     print(covar / covar.max(axis=0))
 
 def pearson(X,y):
