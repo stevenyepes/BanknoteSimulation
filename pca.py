@@ -10,7 +10,10 @@ def pca(X, y,componentes):
     print('Datos transformados')
     print(X_N)
     print('Matriz de varianza explicada')
+    plt.axes([.2, .2, .7, .7])
     plt.plot(pca.explained_variance_ratio_)
+    plt.xlabel('n_components')
+    plt.ylabel('explained_variance_')
     title = 'Porcentaje de varianza explicada con ' + str(componentes) + ' componentes'
     plt.title(title)
     plt.show()

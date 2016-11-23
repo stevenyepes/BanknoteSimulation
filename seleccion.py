@@ -5,8 +5,6 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.preprocessing import normalize
 import numpy as np
 
-from scipy.stats import pearsonr
-
 def seleccionSecuencial(X,y):
 
     knn = KNeighborsClassifier(n_neighbors=4)
@@ -16,7 +14,7 @@ def seleccionSecuencial(X,y):
               forward=True,
               floating=False,
               scoring='accuracy',
-              print_progress=False,
+              print_progress=True,
               cv=4,
               n_jobs=-1)
     sfs = sfs.fit(X, y)
@@ -33,6 +31,3 @@ def fisher(X1,y):
     clf.fit(X1, y)
     covar= clf.covariance_
     print(covar / covar.max(axis=0))
-
-def pearson(X,y):
-    pass
