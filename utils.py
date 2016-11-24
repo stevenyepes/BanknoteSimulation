@@ -1,8 +1,10 @@
 
+import numpy as np
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import GridSearchCV
+
 
 def generarEstadisticos(model, X, y, tuned_parameters):
 
@@ -47,22 +49,30 @@ def generarEstadisticos(model, X, y, tuned_parameters):
     ## Retornar el modelo
     return clf
 
-def reporte(model, X_validation, y_validation):
+def reporte(model):
     print("#### Reporte del modelo con muestras para validación final ####")
-    y_true, y_pred = y_validation, model.predict(X_validation)
+    scores = []
     target_names = ['class 0', 'class 1']
-    print(classification_report(y_true, y_pred, target_names=target_names))
-    print()
-
-def particionar():
     # Obtener datos desde el archivo
     BD = np.load('data.npy')
+
+    for n in range(0, 10):
+        X, X_validation, y, y_validation = particionar(BD)
+        y_true, y_pred = y_validation, model.predict(X_validation)
+        scores.append(accuracy_score(y_true=y_true, y_pred=y_pred))
+
+    #print(classification_report(y_true, y_pred, target_names=target_names))
+    print("eficiencia:", np.mean(scores))
+    print("std. desv. ", np.std(scores))
+
+def particionar(BD):
+
     # Separar los datos en variables y salida
     X = BD[:,0:4]
     y = np.array(BD[:,4], dtype='int')
     # Particiones
     # Training 80% Validation 20%
     X, X_validation, y, y_validation = train_test_split(
-        X, y, test_size=0.2, random_state=1)
+        X, y, test_size=0.2, random_state=np.random.RandomState())
 
-    return X, y, X_validation, y_validation
+    return X, X_validation, y, y_validation

@@ -59,6 +59,6 @@ else:
 
 ## Reporte final
 try:
-    utils.reporte(model, X_validation, y_validation)
+    utils.reporte(model)
 except NameError as e:
     pass
