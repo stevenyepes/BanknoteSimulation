@@ -53,3 +53,16 @@ def reporte(model, X_validation, y_validation):
     target_names = ['class 0', 'class 1']
     print(classification_report(y_true, y_pred, target_names=target_names))
     print()
+
+def particionar():
+    # Obtener datos desde el archivo
+    BD = np.load('data.npy')
+    # Separar los datos en variables y salida
+    X = BD[:,0:4]
+    y = np.array(BD[:,4], dtype='int')
+    # Particiones
+    # Training 80% Validation 20%
+    X, X_validation, y, y_validation = train_test_split(
+        X, y, test_size=0.2, random_state=1)
+
+    return X, y, X_validation, y_validation
