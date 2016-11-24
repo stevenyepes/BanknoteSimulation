@@ -4,6 +4,7 @@ import pandas as pd
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.preprocessing import normalize
 import numpy as np
+from sklearn.feature_selection import SelectPercentile,f_classif
 
 def seleccionSecuencial(X,y):
 
@@ -26,7 +27,14 @@ def seleccionSecuencial(X,y):
     print(pd.DataFrame.from_dict(sfs.get_metric_dict()).T)
 
 
-def fisher(X1,y):
+def fisher(X,y):
+    selector = SelectPercentile(f_classif, percentile=10)
+    selector.fit(X,y)
+    scores = -np.log10(selector.pvalues_)
+    scores /= scores.max()
+    print(scores)
+
+def corr(X1,y):
     clf = LinearDiscriminantAnalysis(n_components=4, priors=None, shrinkage=None,solver='svd', store_covariance=True, tol=0.0001)
     clf.fit(X1, y)
     covar= clf.covariance_

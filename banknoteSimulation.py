@@ -9,6 +9,7 @@ import utils
 from seleccion import seleccionSecuencial
 from pca import pca
 from seleccion import fisher
+from seleccion import corr
 
 
 # Obtener datos desde el archivo
@@ -32,7 +33,8 @@ option = input("###      Banknote Authentication     ###\n" +
                 " 5: Funciones discriminantes gaussianas\n"+
                 " 6: Selección Secuencial\n"+
                 " 7: Indice de Fisher\n"+
-                " 8: Análisis de componentes principales\n-> ")
+                " 8: Análisis de componentes principales\n"+
+                " 9: Analisis de correlacion\n-> ")
 
 if(option == "1"):
     model = kv.kVecinos(X,y)
@@ -50,7 +52,8 @@ elif(option == "7"):
     fisher(X,y)
 elif(option == "8"):
     pca(X,y,3)
-
+elif(option == "9"):
+    corr(X,y)
 else:
     print("ingrese una opción válida")
 
